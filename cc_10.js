@@ -102,7 +102,21 @@ class Product {
           console.log(order.getOrderDetails()); // Log the details of the current order
         }
       }
-    
+    // Method to restock a product
+    restockProduct(productId, quantity) {
+        // Find the product in the inventory by its ID
+        const product = this.products.find(product => product.id === productId);
+  
+        // If the product is found
+        if (product) {
+          // Increase the stock of the product
+          product.stock += quantity;
+          console.log(`Product ${product.name} restocked. New stock: ${product.stock}`);
+        } else {
+          // If the product is not found, log a message
+          console.log(`Product with ID ${productId} not found in inventory.`);
+        }
+      }
   }
   
   // Test Cases:
@@ -119,3 +133,10 @@ class Product {
   // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
   console.log(prod1.getDetails());
   // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3
+  
+
+  // Task 5 - Implemented Product Restocking
+  // Task 5 is in 3  because it is the ony way it can run 
+  inventory.restockProduct(101, 5);
+  console.log(prod1.getDetails()); 
+  // Expected output: "Product: Laptop
