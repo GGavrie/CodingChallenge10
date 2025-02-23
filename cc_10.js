@@ -65,6 +65,7 @@ class Product {
     // Constructor to initialize the inventory with an empty array of products
     constructor() {
       this.products = [];
+      this.orders = [];
     }
   
     // Method to add a product to the inventory
@@ -80,6 +81,28 @@ class Product {
         console.log(product.getDetails()); // Log the details of the current product
       }
     }
+    // Method to place an order
+    placeOrder(orderId, product, quantity) {
+        // Check if there is enough stock
+        if (product.stock >= quantity) {
+          // Create a new order
+          const order = new Order(orderId, product, quantity);
+          this.orders.push(order); // Add the order to the orders array
+          console.log(`Order ${orderId} placed successfully.`);
+        } else {
+          console.log(`Not enough stock for product ${product.name}.`);
+        }
+      }
+  
+      // Method to list all placed orders
+      listOrders() {
+        // Loop through each order in the orders array
+        for (let i = 0; i < this.orders.length; i++) {
+          const order = this.orders[i];
+          console.log(order.getOrderDetails()); // Log the details of the current order
+        }
+      }
+    
   }
   
   // Test Cases:
@@ -88,5 +111,11 @@ class Product {
   inventory.listProducts(); // List all products in the inventory
   // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
 
-  //Task 4 -  Implementing Order Management 
   
+  //Task 4 -  Implementing Order Management 
+  // task 4 is in task 3 so that it can run correctly 
+  inventory.placeOrder(601, prod1, 2);
+  inventory.listOrders();
+  // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
+  console.log(prod1.getDetails());
+  // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3
