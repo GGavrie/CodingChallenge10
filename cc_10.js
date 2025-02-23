@@ -58,3 +58,35 @@ class Product {
   // Log the updated product details
   console.log(prod1.getDetails()); 
   // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5" (Stock reduced)
+
+ 
+  //Task 3 Creating an Inventory Class
+  class Inventory {
+    // Constructor to initialize the inventory with an empty array of products
+    constructor() {
+      this.products = [];
+    }
+  
+    // Method to add a product to the inventory
+    addProduct(product) {
+      this.products.push(product); // Add the product to the end of the products array
+    }
+  
+    // Method to list all products in the inventory
+    listProducts() {
+      // Loop through each product in the products array
+      for (let i = 0; i < this.products.length; i++) {
+        const product = this.products[i]; 
+        console.log(product.getDetails()); // Log the details of the current product
+      }
+    }
+  }
+  
+  // Test Cases:
+  const inventory = new Inventory(); // Create a new instance of the Inventory class
+  inventory.addProduct(prod1); // Add the prod1 product to the inventory
+  inventory.listProducts(); // List all products in the inventory
+  // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
+
+  //Task 4 -  Implementing Order Management 
+  
